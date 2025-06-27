@@ -74,61 +74,61 @@ const LetItGo = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50 dark:bg-black p-6">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <Link to="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+          <Link to="/" className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors">
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Home</span>
           </Link>
-          <div className="flex items-center space-x-2 text-gray-600">
+          <div className="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
             <Timer className="w-4 h-4" />
             <span className="text-sm">{formatTime(timeLeft)}</span>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="text-center mb-12">
-          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="text-center mb-12 animate-fade-in">
+          <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
             <Flame className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Let It Go Room</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            A safe space to release your emotions. Choose how you want to let it go - nothing is saved, everything disappears.
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Let It Go Room</h1>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            A safe space to release your emotions. Choose how you want to let it go – nothing is saved, everything disappears.
           </p>
         </div>
 
         {/* Writing Area */}
-        <Card className="bg-white shadow-sm border border-gray-200 p-8 mb-12">
+        <Card className="bg-white dark:bg-gray-900 shadow-sm border border-gray-200 dark:border-gray-700 p-8 mb-12 animate-fade-in">
           <Textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Write everything you want to release... your anger, frustration, pain. Choose how you want to let it go."
-            className="min-h-48 bg-transparent border-none text-lg resize-none focus:ring-0 text-gray-800 placeholder-gray-400"
+            className="min-h-48 bg-transparent border-none text-lg resize-none focus:ring-0 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-600"
           />
         </Card>
 
         {/* Mode Selection Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Burn Mode */}
           <Card 
-            className="bg-white shadow-sm border border-gray-200 p-8 hover:shadow-md transition-shadow cursor-pointer group"
+            className="bg-white dark:bg-gray-900 shadow-sm border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group hover:ring-2 hover:ring-red-500/20 animate-fade-in"
             onClick={() => content.trim() && setMode('burn')}
           >
             <div className="text-center space-y-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <Flame className="w-8 h-8 text-red-500" />
+              <div className="text-6xl mb-4 group-hover:animate-bounce">
+                🔥
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">🔥 Burn Mode</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Burn Mode</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   Write what's bothering you and watch it burn away in flames.
                 </p>
               </div>
               <Button
                 disabled={!content.trim()}
-                className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white border-0"
+                className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white border-0 disabled:opacity-50"
               >
                 Choose Mode
               </Button>
@@ -137,22 +137,23 @@ const LetItGo = () => {
 
           {/* Smash Mode */}
           <Card 
-            className="bg-white shadow-sm border border-gray-200 p-8 hover:shadow-md transition-shadow cursor-pointer group"
+            className="bg-white dark:bg-gray-900 shadow-sm border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group hover:ring-2 hover:ring-yellow-500/20 animate-fade-in"
             onClick={() => content.trim() && setMode('smash')}
+            style={{ animationDelay: '0.1s' }}
           >
             <div className="text-center space-y-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <Zap className="w-8 h-8 text-yellow-600" />
+              <div className="text-6xl mb-4 group-hover:animate-bounce">
+                💥
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">💥 Smash Mode</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Smash Mode</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   Break virtual objects to release your frustration safely.
                 </p>
               </div>
               <Button
                 disabled={!content.trim()}
-                className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0"
+                className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0 disabled:opacity-50"
               >
                 Choose Mode
               </Button>
@@ -161,22 +162,23 @@ const LetItGo = () => {
 
           {/* Scream Mode */}
           <Card 
-            className="bg-white shadow-sm border border-gray-200 p-8 hover:shadow-md transition-shadow cursor-pointer group"
+            className="bg-white dark:bg-gray-900 shadow-sm border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl dark:hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group hover:ring-2 hover:ring-blue-500/20 animate-fade-in"
             onClick={() => content.trim() && setMode('scream')}
+            style={{ animationDelay: '0.2s' }}
           >
             <div className="text-center space-y-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                <Mic className="w-8 h-8 text-blue-500" />
+              <div className="text-6xl mb-4 group-hover:animate-bounce">
+                🎤
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">🎤 Scream Mode</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Let it all out vocally - shatter glass with the power of your voice.
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Scream Mode</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  Let it all out vocally – shatter glass with the power of your voice.
                 </p>
               </div>
               <Button
                 disabled={!content.trim()}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 disabled:opacity-50"
               >
                 Choose Mode
               </Button>
@@ -185,8 +187,8 @@ const LetItGo = () => {
         </div>
 
         {/* Privacy Note */}
-        <div className="text-center mt-8">
-          <p className="text-gray-500 text-sm">
+        <div className="text-center mt-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             <Timer className="w-4 h-4 inline mr-1" />
             All entries auto-delete after 1 hour for your privacy
           </p>
