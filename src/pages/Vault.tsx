@@ -1,11 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, Clock, Save, Trash2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Clock, Save, Trash2 } from 'lucide-react';
 
 const Vault = () => {
   const [isActive, setIsActive] = useState(false);
@@ -53,21 +51,14 @@ const Vault = () => {
   const progress = ((480 - timeLeft) / 480) * 100;
 
   return (
-    <div className="min-h-screen bg-black text-white p-6">
+    <div className="min-h-screen bg-black text-white p-6 pt-24">
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-8">
-        <div className="flex items-center justify-between mb-6">
-          <Link to="/" className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back to Home</span>
-          </Link>
-          <div className="text-center">
-            <h1 className="text-3xl font-light tracking-tight">
-              <span className="text-gradient-calm">Vault</span>
-            </h1>
-            <p className="text-gray-400 text-sm">8-minute emotional release sessions</p>
-          </div>
-          <div className="w-24"></div>
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-light tracking-tight">
+            <span className="text-gradient-calm">Vault</span>
+          </h1>
+          <p className="text-gray-400 text-sm">8-minute emotional release sessions</p>
         </div>
 
         {/* Timer Card */}

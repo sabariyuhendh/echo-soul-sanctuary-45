@@ -72,6 +72,14 @@ const Index = () => {
       color: "sage",
       gradient: "bg-wellness-flow",
       path: "/feed"
+    },
+    {
+      icon: Sparkles,
+      title: "Calm Space",
+      description: "Meditative space with cosmic visuals and calming music",
+      color: "lavender",
+      gradient: "bg-wellness-flow",
+      path: "/calm"
     }
   ];
 
@@ -98,27 +106,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Apple-style Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-black/80 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-calm-400 to-sage-400 rounded-full flex items-center justify-center breathe">
-                <Heart className="w-4 h-4 text-white" />
-              </div>
-              <h1 className="text-xl font-semibold tracking-tight text-gradient-wellness">EchoSoul</h1>
-            </div>
-            <Link to="/vault">
-              <Button className="apple-button bg-white text-black hover:bg-gray-100 border-0 px-6 py-2 text-sm font-medium">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section - Apple Style with Calming Accents */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -147,9 +136,11 @@ const Index = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <Button variant="outline" className="apple-button border-white/30 text-white hover:bg-white/10 hover:border-calm-400/50 px-8 py-4 text-lg font-light">
-              Watch Demo
-            </Button>
+            <Link to="/calm">
+              <Button variant="outline" className="apple-button border-white/30 text-white hover:bg-white/10 hover:border-calm-400/50 px-8 py-4 text-lg font-light">
+                Enter Calm Space
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -164,11 +155,11 @@ const Index = () => {
               <span className="text-gradient-wellness">Tools</span>
             </h3>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-              Seven powerful tools designed to help you navigate your emotional journey with calm and clarity
+              Eight powerful tools designed to help you navigate your emotional journey with calm and clarity
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => {
               const cardClass = `${feature.color}-card`;
               return (
@@ -205,7 +196,26 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {values.map((value, index) => (
+            {[
+              {
+                icon: Shield,
+                title: "Complete Privacy",
+                description: "Your emotions are yours alone. Anonymous usage and secure storage.",
+                color: "calm"
+              },
+              {
+                icon: Heart,
+                title: "Emotional Safety",
+                description: "A judgment-free space designed specifically for teen emotional wellness.",
+                color: "sage"
+              },
+              {
+                icon: Clock,
+                title: "24/7 Support",
+                description: "Access your emotional toolkit anytime, anywhere you need it.",
+                color: "lavender"
+              }
+            ].map((value, index) => (
               <div 
                 key={value.title}
                 className={`text-center transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}

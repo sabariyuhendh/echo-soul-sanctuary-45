@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -152,114 +151,83 @@
     text-wrap: balance;
   }
   
-  /* Calming glow effects */
-  .text-glow-calm {
-    text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
-  }
-  
-  .text-glow-sage {
-    text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
-  }
-  
-  .text-glow-lavender {
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-  }
-  
-  .apple-shadow {
-    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8);
-  }
-  
-  .calm-shadow {
-    box-shadow: 0 8px 50px rgba(14, 165, 233, 0.2);
-  }
-  
-  .sage-shadow {
-    box-shadow: 0 8px 50px rgba(34, 197, 94, 0.2);
-  }
-  
-  .lavender-shadow {
-    box-shadow: 0 8px 50px rgba(168, 85, 247, 0.2);
-  }
-  
-  /* Apple-style interactive elements with calming accents */
-  .apple-hover {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  .apple-hover:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 20px 80px rgba(14, 165, 233, 0.1);
-  }
-  
-  .apple-button {
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 24px;
-  }
-  
-  .apple-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
-  }
-  
+  /* Enhanced card borders */
   .apple-card {
     backdrop-filter: blur(20px);
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .apple-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     transform: translateY(-8px);
     box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
   }
   
-  /* Calming card variants */
+  /* Enhanced calming card variants with better borders */
   .calm-card {
     backdrop-filter: blur(20px);
-    background: rgba(14, 165, 233, 0.03);
-    border: 1px solid rgba(14, 165, 233, 0.08);
+    background: rgba(14, 165, 233, 0.05);
+    border: 2px solid rgba(14, 165, 233, 0.25);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .calm-card:hover {
-    background: rgba(14, 165, 233, 0.05);
-    border: 1px solid rgba(14, 165, 233, 0.15);
+    background: rgba(14, 165, 233, 0.1);
+    border: 2px solid rgba(14, 165, 233, 0.4);
     transform: translateY(-8px);
-    box-shadow: 0 25px 100px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 25px 100px rgba(14, 165, 233, 0.3);
   }
   
   .sage-card {
     backdrop-filter: blur(20px);
-    background: rgba(34, 197, 94, 0.03);
-    border: 1px solid rgba(34, 197, 94, 0.08);
+    background: rgba(34, 197, 94, 0.05);
+    border: 2px solid rgba(34, 197, 94, 0.25);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .sage-card:hover {
-    background: rgba(34, 197, 94, 0.05);
-    border: 1px solid rgba(34, 197, 94, 0.15);
+    background: rgba(34, 197, 94, 0.1);
+    border: 2px solid rgba(34, 197, 94, 0.4);
     transform: translateY(-8px);
-    box-shadow: 0 25px 100px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 25px 100px rgba(34, 197, 94, 0.3);
   }
   
   .lavender-card {
     backdrop-filter: blur(20px);
-    background: rgba(168, 85, 247, 0.03);
-    border: 1px solid rgba(168, 85, 247, 0.08);
+    background: rgba(168, 85, 247, 0.05);
+    border: 2px solid rgba(168, 85, 247, 0.25);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .lavender-card:hover {
-    background: rgba(168, 85, 247, 0.05);
-    border: 1px solid rgba(168, 85, 247, 0.15);
+    background: rgba(168, 85, 247, 0.1);
+    border: 2px solid rgba(168, 85, 247, 0.4);
     transform: translateY(-8px);
-    box-shadow: 0 25px 100px rgba(168, 85, 247, 0.2);
+    box-shadow: 0 25px 100px rgba(168, 85, 247, 0.3);
+  }
+  
+  /* New immersive animations */
+  .animate-flicker {
+    animation: flicker 0.5s ease-in-out infinite alternate;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
   }
   
   /* Wellness-focused animations */
@@ -270,4 +238,24 @@
   .calm-pulse {
     animation: pulse-glow 3s ease-in-out infinite;
   }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0.8; transform: scaleY(0.95); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.6); }
 }
