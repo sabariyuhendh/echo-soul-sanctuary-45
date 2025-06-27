@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Heart, MessageCircle, BookOpen, Mic, TrendingUp, Sparkles, Shield, Clock, ArrowRight } from 'lucide-react';
+import { Heart, MessageCircle, BookOpen, Mic, TrendingUp, Sparkles, Shield, Clock, ArrowRight, Flame, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
@@ -22,42 +22,56 @@ const Index = () => {
       title: "Vault",
       description: "8-minute timed emotional release sessions in your private space",
       color: "calm",
-      gradient: "bg-calm-gradient"
+      gradient: "bg-calm-gradient",
+      path: "/vault"
     },
     {
       icon: MessageCircle,
       title: "Letters You'll Never Send",
       description: "Write and stylize emotional letters with AI assistance",
       color: "sage",
-      gradient: "bg-sage-gradient"
+      gradient: "bg-sage-gradient",
+      path: "/letters"
     },
     {
-      icon: Sparkles,
+      icon: Flame,
       title: "Let-It-Go Room",
       description: "Interactive emotional release through virtual destruction",
       color: "lavender",
-      gradient: "bg-lavender-gradient"
+      gradient: "bg-lavender-gradient",
+      path: "/letitgo"
     },
     {
       icon: TrendingUp,
       title: "Mood Tracking",
       description: "Daily mood logging with insights and trend analysis",
       color: "rose",
-      gradient: "bg-rose-gradient"
+      gradient: "bg-rose-gradient",
+      path: "/mood"
     },
     {
       icon: Mic,
       title: "WhisperBox",
       description: "Voice diary for private audio reflections and thoughts",
       color: "amber",
-      gradient: "bg-amber-gradient"
+      gradient: "bg-amber-gradient",
+      path: "/whisper"
     },
     {
       icon: Heart,
       title: "AI Soulmate",
       description: "Mood-aware AI companion for emotional support",
       color: "calm",
-      gradient: "bg-wellness-flow"
+      gradient: "bg-wellness-flow",
+      path: "/soulmate"
+    },
+    {
+      icon: Users,
+      title: "Community Feed",
+      description: "Anonymous sharing of emotional insights and support",
+      color: "sage",
+      gradient: "bg-wellness-flow",
+      path: "/feed"
     }
   ];
 
@@ -94,9 +108,11 @@ const Index = () => {
               </div>
               <h1 className="text-xl font-semibold tracking-tight text-gradient-wellness">EchoSoul</h1>
             </div>
-            <Button className="apple-button bg-white text-black hover:bg-gray-100 border-0 px-6 py-2 text-sm font-medium">
-              Get Started
-            </Button>
+            <Link to="/vault">
+              <Button className="apple-button bg-white text-black hover:bg-gray-100 border-0 px-6 py-2 text-sm font-medium">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -125,10 +141,12 @@ const Index = () => {
             and grow through various therapeutic tools and AI-powered support.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button className="apple-button bg-gradient-to-r from-calm-500 to-sage-500 text-white hover:from-calm-600 hover:to-sage-600 px-8 py-4 text-lg font-medium border-0 calm-shadow">
-              Start Your Journey
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/vault">
+              <Button className="apple-button bg-gradient-to-r from-calm-500 to-sage-500 text-white hover:from-calm-600 hover:to-sage-600 px-8 py-4 text-lg font-medium border-0 calm-shadow">
+                Start Your Journey
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
             <Button variant="outline" className="apple-button border-white/30 text-white hover:bg-white/10 hover:border-calm-400/50 px-8 py-4 text-lg font-light">
               Watch Demo
             </Button>
@@ -146,7 +164,7 @@ const Index = () => {
               <span className="text-gradient-wellness">Tools</span>
             </h3>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-              Six powerful tools designed to help you navigate your emotional journey with calm and clarity
+              Seven powerful tools designed to help you navigate your emotional journey with calm and clarity
             </p>
           </div>
           
@@ -154,17 +172,18 @@ const Index = () => {
             {features.map((feature, index) => {
               const cardClass = `${feature.color}-card`;
               return (
-                <Card 
-                  key={feature.title} 
-                  className={`${cardClass} p-8 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                  style={{animationDelay: `${600 + index * 100}ms`}}
-                >
-                  <div className={`w-12 h-12 bg-gradient-to-br from-${feature.color}-400 to-${feature.color}-600 rounded-2xl flex items-center justify-center mb-6 breathe`} style={{animationDelay: `${index * 500}ms`}}>
-                    <feature.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="text-xl font-medium mb-4 tracking-tight">{feature.title}</h4>
-                  <p className="text-gray-400 leading-relaxed font-light">{feature.description}</p>
-                </Card>
+                <Link key={feature.title} to={feature.path}>
+                  <Card 
+                    className={`${cardClass} p-8 transition-all duration-700 cursor-pointer ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    style={{animationDelay: `${600 + index * 100}ms`}}
+                  >
+                    <div className={`w-12 h-12 bg-gradient-to-br from-${feature.color}-400 to-${feature.color}-600 rounded-2xl flex items-center justify-center mb-6 breathe`} style={{animationDelay: `${index * 500}ms`}}>
+                      <feature.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-medium mb-4 tracking-tight">{feature.title}</h4>
+                    <p className="text-gray-400 leading-relaxed font-light">{feature.description}</p>
+                  </Card>
+                </Link>
               );
             })}
           </div>
@@ -217,10 +236,12 @@ const Index = () => {
               Join thousands of teens who have found peace, healing, and growth through EchoSoul.
               Your emotional wellness matters, and you deserve a safe space to grow.
             </p>
-            <Button className="apple-button bg-gradient-to-r from-calm-500 via-sage-500 to-lavender-500 text-white hover:from-calm-600 hover:via-sage-600 hover:to-lavender-600 px-12 py-4 text-lg font-medium border-0 calm-shadow">
-              Start Free Today
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link to="/vault">
+              <Button className="apple-button bg-gradient-to-r from-calm-500 via-sage-500 to-lavender-500 text-white hover:from-calm-600 hover:via-sage-600 hover:to-lavender-600 px-12 py-4 text-lg font-medium border-0 calm-shadow">
+                Start Free Today
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
