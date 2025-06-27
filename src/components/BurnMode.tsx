@@ -15,12 +15,22 @@ const BurnMode = ({ content, onBack, onComplete }: BurnModeProps) => {
   const [burnProgress, setBurnProgress] = useState(0);
   const [isIgnited, setIsIgnited] = useState(false);
   const [burnedText, setBurnedText] = useState(content);
+  const [flames, setFlames] = useState<Array<{id: number, x: number, y: number, size: number}>>([]);
 
   useEffect(() => {
     if (isIgnited) {
+      // Create flame particles
+      const newFlames = Array.from({ length: 20 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: 60 + Math.random() * 30,
+        size: 20 + Math.random() * 40
+      }));
+      setFlames(newFlames);
+
       const burnInterval = setInterval(() => {
         setBurnProgress(prev => {
-          const newProgress = prev + 2;
+          const newProgress = prev + 1;
           
           // Gradually burn away text
           if (newProgress > 20 && newProgress < 80) {
@@ -39,7 +49,7 @@ const BurnMode = ({ content, onBack, onComplete }: BurnModeProps) => {
           }
           return newProgress;
         });
-      }, 100);
+      }, 80);
 
       return () => clearInterval(burnInterval);
     }
@@ -51,117 +61,123 @@ const BurnMode = ({ content, onBack, onComplete }: BurnModeProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Fire Background Effects */}
+    <div className="min-h-screen bg-gradient-to-b from-orange-900 via-red-900 to-black text-white relative overflow-hidden">
+      {/* Fire Effects */}
       {isIgnited && (
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-red-800/30 to-yellow-600/20 animate-pulse"></div>
-          
-          {/* Animated Flames */}
-          {[...Array(30)].map((_, i) => (
+        <div className="absolute inset-0 z-10">
+          {flames.map(flame => (
             <div
-              key={i}
-              className="absolute animate-flicker"
+              key={flame.id}
+              className="absolute animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                bottom: `${Math.random() * 30}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${0.5 + Math.random() * 1}s`
+                left: `${flame.x}%`,
+                bottom: `${flame.y}%`,
+                width: `${flame.size}px`,
+                height: `${flame.size * 1.5}px`,
               }}
             >
-              <div className="w-3 h-8 bg-gradient-to-t from-orange-500 via-red-500 to-yellow-300 rounded-full opacity-80 animate-pulse"></div>
+              <div className="w-full h-full bg-gradient-to-t from-red-500 via-orange-400 to-yellow-300 rounded-full opacity-80 animate-bounce" 
+                   style={{animationDuration: `${0.5 + Math.random()}s`}} />
             </div>
           ))}
           
-          {/* Floating Embers */}
-          {[...Array(20)].map((_, i) => (
+          {/* Floating embers */}
+          {Array.from({ length: 15 }).map((_, i) => (
             <div
               key={`ember-${i}`}
-              className="absolute w-1 h-1 bg-orange-400 rounded-full animate-ping"
+              className="absolute w-2 h-2 bg-orange-400 rounded-full animate-ping"
               style={{
-                left: `${Math.random() * 100}%`,
-                bottom: `${Math.random() * 50}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
+                left: `${20 + Math.random() * 60}%`,
+                bottom: `${10 + Math.random() * 80}%`,
+                animationDelay: `${Math.random() * 2}s`,
               }}
-            ></div>
+            />
           ))}
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto relative z-10 p-6 pt-20">
+      <div className="max-w-4xl mx-auto relative z-20 p-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8 pt-8">
           <Button
             variant="ghost"
             onClick={onBack}
-            className="text-gray-400 hover:text-white"
+            className="text-orange-200 hover:text-white"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back
           </Button>
-          <h1 className="text-3xl font-light text-gradient-amber">Burn Mode</h1>
-          <div className="w-20"></div>
         </div>
 
-        {/* Burning Text Area */}
-        <Card className="apple-card p-8 mb-8 border-white/20 relative">
-          {isIgnited && (
-            <div className="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent rounded-lg"></div>
-          )}
-          
-          <div className="relative z-10">
+        {/* Paper with Text */}
+        <div className="relative mb-8">
+          <div className={`bg-yellow-50 p-8 rounded-lg shadow-2xl transition-all duration-300 ${
+            isIgnited ? 'bg-gradient-to-t from-orange-100 to-yellow-50 border-2 border-orange-300' : ''
+          }`}>
             <Textarea
               value={burnedText}
               readOnly
-              className={`min-h-64 bg-transparent border-none text-lg resize-none focus:ring-0 text-white placeholder-gray-500 transition-all duration-300 ${
-                isIgnited ? 'text-orange-300' : 'text-white'
+              className={`min-h-64 bg-transparent border-none text-lg resize-none focus:ring-0 transition-all duration-300 ${
+                isIgnited ? 'text-red-700' : 'text-gray-800'
               }`}
               style={{
-                textShadow: isIgnited ? '0 0 10px rgba(255, 165, 0, 0.5)' : 'none'
+                textShadow: isIgnited ? '0 0 5px rgba(255, 100, 0, 0.5)' : 'none',
+                fontFamily: 'serif'
               }}
             />
+            
+            {/* Burn holes effect */}
+            {isIgnited && burnProgress > 30 && (
+              <>
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute bg-black rounded-full opacity-60"
+                    style={{
+                      width: `${10 + Math.random() * 20}px`,
+                      height: `${10 + Math.random() * 20}px`,
+                      left: `${20 + Math.random() * 60}%`,
+                      top: `${20 + Math.random() * 60}%`,
+                    }}
+                  />
+                ))}
+              </>
+            )}
           </div>
-        </Card>
+        </div>
 
-        {/* Burn Controls */}
-        <Card className="apple-card p-8 text-center border-white/20">
+        {/* Controls */}
+        <Card className="bg-black/30 backdrop-blur-sm border-orange-400/30 p-6 text-center">
           {!isIgnited ? (
-            <div className="space-y-6">
-              <div className="w-24 h-24 bg-gradient-to-br from-amber-500 to-red-500 rounded-full flex items-center justify-center mx-auto">
-                <Flame className="w-12 h-12 text-white" />
+            <div className="space-y-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto">
+                <Flame className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl font-light">Ready to let it burn?</h2>
-              <p className="text-gray-400">
-                Watch your pain turn to ash and drift away forever
-              </p>
+              <h2 className="text-xl font-semibold">Ready to burn it away?</h2>
               <Button
                 onClick={startBurning}
-                className="apple-button bg-gradient-to-r from-amber-500 to-red-500 text-white px-8 py-3"
+                className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white"
               >
-                <Flame className="w-5 h-5 mr-2" />
+                <Flame className="w-4 h-4 mr-2" />
                 Ignite
               </Button>
             </div>
           ) : (
-            <div className="space-y-6">
-              <div className="w-24 h-24 bg-gradient-to-br from-amber-500 to-red-500 rounded-full flex items-center justify-center mx-auto animate-pulse">
-                <Flame className="w-12 h-12 text-white animate-bounce" />
+            <div className="space-y-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto animate-pulse">
+                <Flame className="w-8 h-8 text-white animate-bounce" />
               </div>
-              <h2 className="text-2xl font-light">
-                {burnProgress < 50 ? 'Flames rising...' : 
-                 burnProgress < 90 ? 'Turning to ash...' : 
-                 'Rising as smoke...'}
+              <h2 className="text-xl font-semibold">
+                {burnProgress < 30 ? 'Catching fire...' : 
+                 burnProgress < 70 ? 'Burning away...' : 
+                 'Turning to ash...'}
               </h2>
-              <div className="w-full bg-gray-700 rounded-full h-4">
+              <div className="w-full bg-gray-800 rounded-full h-3">
                 <div 
-                  className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-400 h-4 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-red-500 to-orange-400 h-3 rounded-full transition-all duration-300"
                   style={{ width: `${burnProgress}%` }}
-                ></div>
+                />
               </div>
-              <p className="text-orange-300">
-                {burnProgress < 100 ? `Burning... ${burnProgress}%` : 'Released into the universe ✨'}
-              </p>
             </div>
           )}
         </Card>
