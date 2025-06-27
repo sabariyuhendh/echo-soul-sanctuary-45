@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apple-inspired Black & White Design System */
+/* Calming Emotional Wellness Design System */
 
 @layer base {
   :root {
@@ -35,6 +35,13 @@
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 15%;
     --sidebar-ring: 0 0% 83%;
+    
+    /* Calming color accents */
+    --calm-primary: 199 89% 48%;
+    --sage-primary: 142 76% 36%;
+    --lavender-primary: 262 83% 58%;
+    --rose-primary: 347 77% 50%;
+    --amber-primary: 38 92% 50%;
   }
 }
 
@@ -53,20 +60,60 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
-  /* Apple-style glassmorphism */
+  /* Apple-style glassmorphism with calming accents */
   .glass {
     backdrop-filter: blur(20px) saturate(180%);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .glass-dark {
+  .glass-calm {
     backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.1);
   }
   
-  /* Apple-style text gradients */
+  .glass-sage {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+  }
+  
+  .glass-lavender {
+    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.1);
+  }
+  
+  /* Calming text gradients */
+  .text-gradient-calm {
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-sage {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-lavender {
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-wellness {
+    background: linear-gradient(135deg, #38bdf8 0%, #4ade80 25%, #c084fc 50%, #fda4af 75%, #fcd34d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
   .text-gradient-white {
     background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
     -webkit-background-clip: text;
@@ -91,12 +138,12 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(14, 165, 233, 0.3);
     border-radius: 3px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(14, 165, 233, 0.5);
   }
 }
 
@@ -105,23 +152,43 @@
     text-wrap: balance;
   }
   
-  /* Apple-style text effects */
-  .text-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  /* Calming glow effects */
+  .text-glow-calm {
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+  }
+  
+  .text-glow-sage {
+    text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  }
+  
+  .text-glow-lavender {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
   }
   
   .apple-shadow {
     box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8);
   }
   
-  /* Apple-style interactive elements */
+  .calm-shadow {
+    box-shadow: 0 8px 50px rgba(14, 165, 233, 0.2);
+  }
+  
+  .sage-shadow {
+    box-shadow: 0 8px 50px rgba(34, 197, 94, 0.2);
+  }
+  
+  .lavender-shadow {
+    box-shadow: 0 8px 50px rgba(168, 85, 247, 0.2);
+  }
+  
+  /* Apple-style interactive elements with calming accents */
   .apple-hover {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .apple-hover:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 20px 80px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 80px rgba(14, 165, 233, 0.1);
   }
   
   .apple-button {
@@ -147,5 +214,60 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     transform: translateY(-8px);
     box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Calming card variants */
+  .calm-card {
+    backdrop-filter: blur(20px);
+    background: rgba(14, 165, 233, 0.03);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .calm-card:hover {
+    background: rgba(14, 165, 233, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 100px rgba(14, 165, 233, 0.2);
+  }
+  
+  .sage-card {
+    backdrop-filter: blur(20px);
+    background: rgba(34, 197, 94, 0.03);
+    border: 1px solid rgba(34, 197, 94, 0.08);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .sage-card:hover {
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 100px rgba(34, 197, 94, 0.2);
+  }
+  
+  .lavender-card {
+    backdrop-filter: blur(20px);
+    background: rgba(168, 85, 247, 0.03);
+    border: 1px solid rgba(168, 85, 247, 0.08);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .lavender-card:hover {
+    background: rgba(168, 85, 247, 0.05);
+    border: 1px solid rgba(168, 85, 247, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 100px rgba(168, 85, 247, 0.2);
+  }
+  
+  /* Wellness-focused animations */
+  .breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  .calm-pulse {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }

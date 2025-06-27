@@ -63,65 +63,87 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// EchoSoul emotional wellness palette
-				soul: {
-					50: '#f0f9ff',
-					100: '#e0f2fe',
-					200: '#bae6fd',
-					300: '#7dd3fc',
-					400: '#38bdf8',
-					500: '#0ea5e9',
-					600: '#0284c7',
-					700: '#0369a1',
-					800: '#075985',
-					900: '#0c4a6e'
+				// Emotional Wellness Color Palette
+				calm: {
+					50: '#f0f9ff',    // Lightest sky blue - peace
+					100: '#e0f2fe',   // Soft blue - tranquility  
+					200: '#bae6fd',   // Light blue - serenity
+					300: '#7dd3fc',   // Medium blue - clarity
+					400: '#38bdf8',   // Bright blue - hope
+					500: '#0ea5e9',   // Primary blue - trust
+					600: '#0284c7',   // Deep blue - stability
+					700: '#0369a1',   // Darker blue - confidence
+					800: '#075985',   // Navy blue - security
+					900: '#0c4a6e'    // Deepest blue - grounding
 				},
-				echo: {
-					50: '#fdf4ff',
-					100: '#fae8ff',
-					200: '#f5d0fe',
-					300: '#f0abfc',
-					400: '#e879f9',
-					500: '#d946ef',
-					600: '#c026d3',
-					700: '#a21caf',
-					800: '#86198f',
-					900: '#701a75'
+				sage: {
+					50: '#f0fdf4',    // Soft mint - renewal
+					100: '#dcfce7',   // Light green - growth
+					200: '#bbf7d0',   // Gentle green - healing
+					300: '#86efac',   // Fresh green - vitality
+					400: '#4ade80',   // Vibrant green - energy
+					500: '#22c55e',   // Primary green - balance
+					600: '#16a34a',   // Deep green - nature
+					700: '#15803d',   // Forest green - stability
+					800: '#166534',   // Dark green - grounding
+					900: '#14532d'    // Deepest green - security
 				},
-				healing: {
-					50: '#f0fdf4',
-					100: '#dcfce7',
-					200: '#bbf7d0',
-					300: '#86efac',
-					400: '#4ade80',
-					500: '#22c55e',
-					600: '#16a34a',
-					700: '#15803d',
-					800: '#166534',
-					900: '#14532d'
+				lavender: {
+					50: '#faf5ff',    // Softest purple - peace
+					100: '#f3e8ff',   // Light lavender - calm
+					200: '#e9d5ff',   // Gentle purple - relaxation
+					300: '#d8b4fe',   // Medium lavender - comfort
+					400: '#c084fc',   // Soft purple - creativity
+					500: '#a855f7',   // Primary lavender - inspiration
+					600: '#9333ea',   // Deep purple - wisdom
+					700: '#7c3aed',   // Rich purple - intuition
+					800: '#6b21a8',   // Dark purple - mystery
+					900: '#581c87'    // Deepest purple - transformation
 				},
-				warmth: {
-					50: '#fef7ed',
-					100: '#feeddb',
-					200: '#fed9b7',
-					300: '#fdba87',
-					400: '#fb923c',
-					500: '#f97316',
-					600: '#ea580c',
-					700: '#c2410c',
-					800: '#9a3412',
-					900: '#7c2d12'
+				rose: {
+					50: '#fff1f2',    // Softest pink - tenderness
+					100: '#ffe4e6',   // Light rose - compassion
+					200: '#fecdd3',   // Gentle pink - love
+					300: '#fda4af',   // Medium rose - warmth
+					400: '#fb7185',   // Soft coral - comfort
+					500: '#f43f5e',   // Primary rose - passion
+					600: '#e11d48',   // Deep rose - strength
+					700: '#be123c',   // Rich red - courage
+					800: '#9f1239',   // Dark red - power
+					900: '#881337'    // Deepest red - determination
+				},
+				amber: {
+					50: '#fffbeb',    // Softest yellow - joy
+					100: '#fef3c7',   // Light amber - optimism
+					200: '#fde68a',   // Gentle yellow - happiness
+					300: '#fcd34d',   // Medium amber - energy
+					400: '#fbbf24',   // Bright yellow - confidence
+					500: '#f59e0b',   // Primary amber - warmth
+					600: '#d97706',   // Deep amber - vitality
+					700: '#b45309',   // Rich orange - creativity
+					800: '#92400e',   // Dark orange - strength
+					900: '#78350f'    // Deepest orange - grounding
 				}
 			},
 			backgroundImage: {
-				'soul-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-				'echo-gradient': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-				'healing-gradient': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-				'warmth-gradient': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-				'emotional-flow': 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #ffecd2 100%)',
-				'peaceful-dawn': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-				'inner-peace': 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
-				'emotional-release': 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)'
+				// Calming gradient combinations
+				'calm-gradient': 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+				'sage-gradient': 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+				'lavender-gradient': 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+				'rose-gradient': 'linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)',
+				'amber-gradient': 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+				
+				// Multi-color wellness gradients
+				'wellness-flow': 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 25%, #faf5ff 50%, #fff1f2 75%, #fffbeb 100%)',
+				'emotional-balance': 'linear-gradient(135deg, #e0f2fe 0%, #dcfce7 50%, #f3e8ff 100%)',
+				'inner-peace': 'linear-gradient(135deg, #bae6fd 0%, #bbf7d0 33%, #e9d5ff 66%, #fecdd3 100%)',
+				'tranquil-dawn': 'linear-gradient(135deg, #0ea5e9 0%, #22c55e 50%, #a855f7 100%)',
+				'healing-light': 'linear-gradient(135deg, #38bdf8 0%, #86efac 25%, #d8b4fe 50%, #fda4af 75%, #fcd34d 100%)',
+				
+				// Subtle overlay gradients for dark theme
+				'calm-overlay': 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%)',
+				'sage-overlay': 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%)',
+				'wellness-overlay': 'linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(34, 197, 94, 0.05) 25%, rgba(168, 85, 247, 0.05) 50%, rgba(244, 63, 94, 0.05) 75%, rgba(245, 158, 11, 0.05) 100%)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -153,12 +175,16 @@ export default {
 					'50%': { transform: 'translateY(-20px)' }
 				},
 				'pulse-glow': {
-					'0%, 100%': { boxShadow: '0 0 20px rgba(102, 126, 234, 0.5)' },
-					'50%': { boxShadow: '0 0 40px rgba(102, 126, 234, 0.8)' }
+					'0%, 100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.3)' },
+					'50%': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.6)' }
 				},
 				'fade-in-up': {
 					'0%': { opacity: '0', transform: 'translateY(30px)' },
 					'100%': { opacity: '1', transform: 'translateY(0px)' }
+				},
+				'breathe': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+					'50%': { transform: 'scale(1.05)', opacity: '1' }
 				}
 			},
 			animation: {
@@ -166,7 +192,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
-				'fade-in-up': 'fade-in-up 0.6s ease-out'
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'breathe': 'breathe 4s ease-in-out infinite'
 			}
 		}
 	},
